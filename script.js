@@ -1,11 +1,11 @@
-if(localStorage.getItem("loggedIn")!=="true"){
-window.location.href="login.html";
-}
+let transactions = JSON.parse(localStorage.getItem("data")) || [];
 
-let transactions=JSON.parse(localStorage.getItem("data"))||[];
-
-let editId=null;
+let editId = null;
 let chart;
+
+// Auto fill today's date
+document.getElementById("date").valueAsDate = new Date();
+document.getElementById("filterDate").valueAsDate = new Date();
 
 function addTransaction(){
 
@@ -117,17 +117,23 @@ display(filtered)
 }
 
 function showAll(){
+
 display(transactions)
+
 }
 
 function save(){
+
 localStorage.setItem("data",JSON.stringify(transactions))
+
 }
 
 function clearForm(){
+
 desc.value=""
 amount.value=""
 date.value=""
+
 }
 
 function draw(income,expense){

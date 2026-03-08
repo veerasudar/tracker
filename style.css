@@ -66,6 +66,12 @@ border:none;
 border-radius:8px;
 }
 
+label{
+font-size:14px;
+margin-top:8px;
+display:block;
+}
+
 button{
 width:100%;
 padding:12px;
@@ -100,7 +106,11 @@ padding:5px 8px;
 margin-left:5px;
 }
 
-/* Mobile Responsive */
+canvas{
+margin-top:20px;
+}
+
+/* Mobile responsive */
 
 @media(max-width:500px){
 
@@ -112,15 +122,10 @@ flex-direction:column;
 font-size:24px;
 }
 .summary div:first-child{
-
-width:92%;
-
+    width: 92%;
 }
-
 .summary div:last-child{
-
-width:92%;
-
+    width: 92%;
 }
 
 }
