@@ -1,70 +1,107 @@
 <!DOCTYPE html>
 <html>
-
 <head>
 
-<title>Expense Tracker</title>
+<title>Login</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="style.css">
+<style>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+body{
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+font-family:Arial;
+background:#2c5364;
+margin:0;
+}
+
+.card{
+background:white;
+padding:30px;
+border-radius:10px;
+text-align:center;
+width:90%;
+max-width:350px;
+}
+
+input{
+padding:12px;
+margin:10px 0;
+width:100%;
+border-radius:6px;
+border:1px solid #ccc;
+}
+
+button{
+padding:12px;
+width:100%;
+margin-top:8px;
+background:orange;
+border:none;
+border-radius:6px;
+font-weight:bold;
+cursor:pointer;
+}
+
+</style>
 
 </head>
 
 <body>
 
-<div class="container">
+<div class="card">
 
-<h1>💰 Expense Tracker</h1>
+<h2>💰 Expense Tracker Login</h2>
 
-<h2 id="balance">₹0</h2>
+<input id="username" placeholder="Username">
 
-<div class="summary">
+<input id="password" type="password" placeholder="Password">
 
-<div>
-<h3>Income</h3>
-<p id="income">0</p>
-</div>
+<button onclick="login()">Login</button>
 
-<div>
-<h3>Expense</h3>
-<p id="expense">0</p>
-</div>
+<button onclick="register()">Register</button>
+
+<p id="msg"></p>
 
 </div>
 
-<div class="form">
+<script>
 
-<input id="desc" placeholder="Description">
+function register(){
 
-<input id="amount" type="number" placeholder="Amount">
+let u=username.value
+let p=password.value
 
-<select id="type">
-<option value="income">Income</option>
-<option value="expense">Expense</option>
-</select>
+localStorage.setItem("user",u)
+localStorage.setItem("pass",p)
 
-<input id="date" type="date">
+msg.innerText="Registered Successfully"
 
-<button onclick="addTransaction()">Add</button>
+}
 
-</div>
+function login(){
 
-<h3>Filter by date</h3>
+let u=username.value
+let p=password.value
 
-<input type="date" id="filterDate" onchange="filterByDate()">
+if(u===localStorage.getItem("user") && p===localStorage.getItem("pass")){
 
-<button onclick="showAll()">Show All</button>
+localStorage.setItem("loggedIn","true")
 
-<ul id="list"></ul>
+window.location.href="login.html"
 
-<canvas id="chart"></canvas>
+}else{
 
-</div>
+msg.innerText="Wrong login"
 
-<script src="script.js"></script>
+}
+
+}
+
+</script>
 
 </body>
 </html>
